@@ -9,7 +9,8 @@ RSS_FEEDS = {
     "hollywood": "http://feeds.feedburner.com/thr/news",
     'cnn': 'http://rss.cnn.com/rss/edition.rss',
     "screen": "http://screenrant.com/feed/",
-    "slash" :"http://feeds2.feedburner.com/slashfilm"
+    "slash" :"http://feeds2.feedburner.com/slashfilm",
+    "time": "http://time.com/feed/"
 }
 
 

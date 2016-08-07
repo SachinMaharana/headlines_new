@@ -1,0 +1,25 @@
+.box {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 4px 4px 0 rgba(0, 0, 0, 0);
+    padding: 10px;
+
+
+}
+
+.box1{ background: #16a085 }
+.box2{ background: #34495e }
+.box3{ background: #e74c3c }
+
+.container{
+    display: flex;
+    border: 10px solid #6a1024;
+    min-height: 35px;
+    /*flex-wrap: wrap;*/
+}
+
+.box {
+    width: 33.3333333%;
+    
+}
