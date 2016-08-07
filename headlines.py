@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import feedparser
 
 
@@ -7,33 +7,18 @@ app =Flask(__name__)
 RSS_FEEDS = {
     "bbc": "http://feeds.bbci.co.uk/news/rss.xml",
     "hollywood": "http://feeds.feedburner.com/thr/news",
-    'cnn': 'http://rss.cnn.com/rss/edition.rss'
+    'cnn': 'http://rss.cnn.com/rss/edition.rss',
+    "screen": "http://screenrant.com/feed/",
+    "slash" :"http://feeds2.feedburner.com/slashfilm"
 }
-
-
-# def bbc():
-#     return get_news("bbc")
-
-# @app.route("/hollywood")
-# def cnn():
-#     return get_news("hollywood")
 
 
 @app.route("/")
 @app.route("/<publication>")
 def get_news(publication="bbc"):
     feed = feedparser.parse(RSS_FEEDS[publication])
-    first_article = feed["entries"][0]
-    for key, v in first_article.items():
-        print(key)
-    return """<html>
-        <body>
-            <h1> HEADLINES <h1>
-            <b>{0}</b> <br/>
-            <i>{1}</i> <br/>
-            <p>{2}<p> <br/>
-        </body>
-    <html>""".format(first_article.get("title"), first_article.get("published"), first_article.get("summary"))
+    # first_article = feed["entries"][0]
+    return render_template("home.html", articles=feed["entries"])
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
