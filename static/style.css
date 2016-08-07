@@ -8,6 +8,9 @@
 
 }
 
+#element {
+    display: inline-block;
+}
 .box1{ background: #16a085 }
 .box2{ background: #34495e }
 .box3{ background: #e74c3c }
@@ -21,5 +24,5 @@
 
 .box {
     width: 33.3333333%;
-    
+
 }
