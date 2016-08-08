@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+
 <head>
     <title>HEADLINES</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
     <h1>Headlines</h1>
     <h2>Current weather</h2>
@@ -12,32 +14,52 @@
     </form>
     <p>City: <b>{{weather.city}}</b></p>
     <p>{{weather.description}} |{{weather.temperature}}℃</p>
+    <h2>Currency</h2>
+    <form>
+        from:
+        <select name="currency_from">
+            {% for currency in currencies %}
+            <option value="{{currency}}" {{ 'selected="selected"' if currency_from==currency}}>{{currency}}</option>
+            {% endfor %}
+        </select>
+
+        to:
+        <select name="currency_to">
+            {% for currency in currencies %}
+            <option value="{{currency}}" {{ 'selected="selected"' if currency_to==currency}}>{{currency}}</option>
+            {% endfor %}
+
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+    <p>
+        {{currency_from}} = {{currency_to}} {{rate}}
+    </p>
     <h2>Headlines</h2>
     <h3>Avalaible Titles: More coming soon!</h3>
-    <hr>
-    {% for key,value in publication.items() %}
-        <p id="element">{{key}}</p>
+    <hr> {% for key,value in publication.items() %}
+    <p id="element">{{key}}</p>
     {% endfor %}
     <form>
         <input type="text" name="publication" placeholder="search">
-        <input type="submit" value="Submit"/>
+        <input type="submit" value="Submit" />
     </form>
-    <br />
-    {% for article in articles %}
-        <div class="container">
-            <div class="box box1">
-                <a href="{{article.link}} ">{{article.title}}</a>
-                <br />
-            </div>
-            <div class="box box2">
-                <i>{{article.published}}</i>
-                <br />
-            </div>
-            <div class="box box3">
-                <p>{{article.summary}}</p>
-                <hr/>
-            </div>
+    <br /> {% for article in articles %}
+    <div class="container">
+        <div class="box box1">
+            <a href="{{article.link}} ">{{article.title}}</a>
+            <br />
         </div>
+        <div class="box box2">
+            <i>{{article.published}}</i>
+            <br />
+        </div>
+        <div class="box box3">
+            <p>{{article.summary}}</p>
+            <hr/>
+        </div>
+    </div>
     {% endfor %}
 </body>
+
 </html>
